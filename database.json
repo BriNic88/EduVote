@@ -1,0 +1,53 @@
+{
+  "users": [
+    {
+      "id": "1c892b02-bc82-4b98-ac67-f1be532b5130",
+      "role": "admin",
+      "email": "admin@school.edu",
+      "password": "admin123",
+      "fullName": "System Administrator",
+      "adminId": "admin",
+      "status": "approved",
+      "hasVoted": []
+    },
+    {
+      "id": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f",
+      "role": "student",
+      "email": "brian.baraka@mpesafoundationacademy.ac.ke",
+      "password": "4adjTPRGNbAitKQ",
+      "fullName": "baraka ",
+      "className": "Grade 9A",
+      "status": "pending",
+      "hasVoted": []
+    }
+  ],
+  "elections": [
+    {
+      "id": "1db2ece2-90be-474d-b1bb-20280cef7674",
+      "title": "Student Council Election 2024",
+      "description": "Annual election for student council positions",
+      "startTime": "2025-12-01T16:22",
+      "endTime": "2025-12-08T16:22",
+      "resultsPublished": false,
+      "posts": [
+        {
+          "id": "429dafde-9401-4b7c-ba71-06273c0229ed",
+          "title": "President",
+          "candidates": [
+            {
+              "id": "d0722c7f-17e9-4daa-9125-1f8b0c6f2d69",
+              "name": "John Smith",
+              "description": "Dedicated student leader with 2 years experience"
+            },
+            {
+              "id": "61d098fb-5059-4fe8-8a55-38448189bf01",
+              "name": "Jane Doe",
+              "description": "Innovative thinker committed to student welfare"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "votes": []
+}
