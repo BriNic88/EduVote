@@ -1,0 +1,117 @@
+Build a complete MVP of a School Online Voting System using HTML, CSS, JavaScript, and a Node.js + Express backend. The system must support two types of users: Admin and Student. The entire project should run fully inside Replit without external configuration. Use a JSON file as the database. Generate ALL project files and ensure everything works out-of-the-box.
+
+🔐 1. LOGIN FLOW (ADMIN + STUDENTS)
+
+Create a login system with:
+
+Student Login Fields
+
+Full Name
+
+Class
+
+Email
+
+Password
+
+Admin Login Fields
+
+Admin ID
+
+Password
+
+Requirements:
+
+Login page should display “Login as Admin” and “Login as Student” clearly.
+
+Unauthorized users cannot access admin pages.
+
+“Sign Up” page for students.
+
+“Forgot Password” page for recovery.
+
+Store credentials in database.json.
+
+🏫 2. ADMIN PORTAL — FULL FUNCTIONALITY
+
+Admin must be able to:
+
+Create new elections
+
+Add posts (e.g., President, Clubs Captain, Sports Captain)
+
+Add candidates with name + description + a placeholder photo
+
+Set election start and end time
+
+Approve or block student accounts
+
+See total registered students
+
+See who has voted
+
+View live vote counts in real time
+
+Publish results after election ends
+
+Admin pages required:
+
+admin_dashboard.html
+
+manage_elections.html
+
+manage_candidates.html
+
+manage_users.html
+
+admin_results.html
+
+🎓 3. STUDENT PORTAL — FULL FUNCTIONALITY
+
+Students must be able to:
+
+View Upcoming Elections
+
+View Live Elections
+
+View candidates per post
+
+Cast their vote one time only
+
+See a message once they have voted (“You have already voted”)
+
+View results after admin publishes
+
+Update their profile
+
+Logout
+
+Student pages required:
+
+student_dashboard.html
+
+upcoming.html
+
+live_elections.html
+
+cast_vote.html
+
+student_results.html
+
+📊 4. ELECTION LOGIC AND RULES
+
+The system must support:
+
+Multiple elections at once
+
+Automatic hiding of elections that haven’t started
+
+Automatic closing of elections after end time
+
+Prevent double voting
+
+Prevent voting before start date
+
+Prevent voting after end date
+
+Real-time counting using the JSON database
