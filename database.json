@@ -18,7 +18,9 @@
       "fullName": "baraka ",
       "className": "Grade 9A",
       "status": "approved",
-      "hasVoted": []
+      "hasVoted": [
+        "8e4741fb-72c0-4527-bc38-085ed3def10b"
+      ]
     }
   ],
   "elections": [
@@ -27,8 +29,8 @@
       "title": "President",
       "description": "Headboy good boy leader of the school",
       "startTime": "2025-12-01T19:30",
-      "endTime": "2025-12-02T19:30",
-      "resultsPublished": false,
+      "endTime": "2025-12-02T08:11",
+      "resultsPublished": true,
       "posts": [
         {
           "id": "028945e9-a327-44b8-896e-3ef2c89355c1",
@@ -49,5 +51,14 @@
       ]
     }
   ],
-  "votes": []
+  "votes": [
+    {
+      "id": "cc7e5980-7fb7-440b-affb-a244f516ee76",
+      "electionId": "8e4741fb-72c0-4527-bc38-085ed3def10b",
+      "postId": "028945e9-a327-44b8-896e-3ef2c89355c1",
+      "candidateId": "0d280c92-3925-4bb5-80ae-7a452d6e074a",
+      "voterId": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f",
+      "timestamp": "2025-12-02T05:03:41.420Z"
+    }
+  ]
 }

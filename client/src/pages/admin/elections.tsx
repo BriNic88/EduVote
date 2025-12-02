@@ -146,10 +146,24 @@ export default function ManageElections() {
   });
 
   const onSubmit = (data: InsertElection) => {
+    // Convert datetime-local strings to ISO format
+    const convertToISO = (dateTimeLocal: string) => {
+      if (!dateTimeLocal) return dateTimeLocal;
+      // datetime-local format: "2025-12-01T14:30"
+      // Convert to ISO: "2025-12-01T14:30:00Z"
+      return new Date(dateTimeLocal).toISOString();
+    };
+
+    const convertedData = {
+      ...data,
+      startTime: convertToISO(data.startTime),
+      endTime: convertToISO(data.endTime),
+    };
+
     if (editingElection) {
-      updateMutation.mutate({ id: editingElection.id, data });
+      updateMutation.mutate({ id: editingElection.id, data: convertedData });
     } else {
-      createMutation.mutate(data);
+      createMutation.mutate(convertedData);
     }
   };
 
