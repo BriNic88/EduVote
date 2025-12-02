@@ -79,5 +79,11 @@
       "voterId": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f",
       "timestamp": "2025-12-02T05:03:41.420Z"
     }
-  ]
+  ],
+  "passwordResets": {
+    "27aafcf03ea3974a6f6b41b5db5b5fb1c2a65c3eb5f659b17acf2ad2dcc3e2cf": {
+      "email": "brian.baraka@mpesafoundationacademy.ac.ke",
+      "expiry": 1764740903450
+    }
+  }
 }
