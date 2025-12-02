@@ -21,6 +21,7 @@ interface Database {
   users: User[];
   elections: Election[];
   votes: Vote[];
+  passwordResets: Record<string, { email: string; expiry: number }>;
 }
 
 function loadDatabase(): Database {
@@ -49,6 +50,7 @@ function loadDatabase(): Database {
     ],
     elections: [],
     votes: [],
+    passwordResets: {},
   };
 
   saveDatabase(defaultDb);
@@ -77,6 +79,9 @@ export interface IStorage {
   updateUserPassword(id: string, password: string): Promise<User | undefined>;
   markUserVoted(id: string, electionId: string): Promise<User | undefined>;
   getRecentVoters(): Promise<User[]>;
+  storePasswordReset(email: string, token: string, expiry: number): Promise<void>;
+  getPasswordReset(token: string): Promise<{ email: string } | undefined>;
+  clearPasswordReset(token: string): Promise<void>;
 
   // Election operations
   getAllElections(): Promise<Election[]>;
@@ -410,6 +415,30 @@ export class JsonStorage implements IStorage {
 
   async getTotalVotes(): Promise<number> {
     return this.db.votes.length;
+  }
+
+  // Password reset operations
+  async storePasswordReset(email: string, token: string, expiry: number): Promise<void> {
+    this.db.passwordResets[token] = { email, expiry };
+    this.save();
+  }
+
+  async getPasswordReset(token: string): Promise<{ email: string } | undefined> {
+    const reset = this.db.passwordResets[token];
+    if (reset && reset.expiry > Date.now()) {
+      return { email: reset.email };
+    }
+    // Cleanup expired token
+    if (reset && reset.expiry <= Date.now()) {
+      delete this.db.passwordResets[token];
+      this.save();
+    }
+    return undefined;
+  }
+
+  async clearPasswordReset(token: string): Promise<void> {
+    delete this.db.passwordResets[token];
+    this.save();
   }
 }
 

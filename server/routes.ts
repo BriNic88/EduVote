@@ -1,7 +1,9 @@
 import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import session from "express-session";
+import { randomBytes } from "crypto";
 import { storage } from "./storage";
+import { sendPasswordResetEmail } from "./email";
 import {
   loginStudentSchema,
   loginAdminSchema,
@@ -178,16 +180,76 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
     });
   });
 
-  // Forgot password (placeholder - would need email service in production)
+  // Forgot password
   app.post("/api/auth/forgot-password", async (req, res) => {
     try {
       const { email } = req.body;
       const user = await storage.getUserByEmail(email);
       
+      if (user) {
+        // Generate reset token
+        const token = randomBytes(32).toString("hex");
+        const expiry = Date.now() + 24 * 60 * 60 * 1000; // 24 hours
+        
+        // Store reset token
+        await storage.storePasswordReset(email, token, expiry);
+        
+        // Create reset link
+        const resetLink = `${req.protocol}://${req.get("host")}/reset-password?token=${token}`;
+        
+        // Send email
+        await sendPasswordResetEmail(email, resetLink);
+      }
+      
       // Always return success to prevent email enumeration
-      res.json({ message: "If an account exists, reset instructions have been sent" });
+      res.json({ message: "If an account exists with that email address, we've sent password reset instructions. Please check your inbox and spam folder." });
     } catch (error) {
       console.error("Forgot password error:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
+
+  // Verify reset token
+  app.post("/api/auth/verify-reset-token", async (req, res) => {
+    try {
+      const { token } = req.body;
+      const reset = await storage.getPasswordReset(token);
+      
+      if (!reset) {
+        return res.status(400).json({ error: "Invalid or expired token" });
+      }
+      
+      res.json({ email: reset.email });
+    } catch (error) {
+      console.error("Verify reset token error:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
+
+  // Reset password
+  app.post("/api/auth/reset-password", async (req, res) => {
+    try {
+      const { token, newPassword } = req.body;
+      
+      const reset = await storage.getPasswordReset(token);
+      if (!reset) {
+        return res.status(400).json({ error: "Invalid or expired token" });
+      }
+      
+      const user = await storage.getUserByEmail(reset.email);
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+      
+      // Update password
+      await storage.updateUserPassword(user.id, newPassword);
+      
+      // Clear reset token
+      await storage.clearPasswordReset(token);
+      
+      res.json({ message: "Password reset successfully" });
+    } catch (error) {
+      console.error("Reset password error:", error);
       res.status(500).json({ error: "Internal server error" });
     }
   });
