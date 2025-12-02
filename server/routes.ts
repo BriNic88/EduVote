@@ -468,6 +468,44 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
     }
   });
 
+  // Helper function to generate results
+  async function generateElectionResults(electionId: string): Promise<ElectionResult | null> {
+    const election = await storage.getElection(electionId);
+    if (!election) return null;
+
+    const votes = await storage.getVotesByElection(electionId);
+    const postResults: PostResult[] = election.posts.map((post) => {
+      const candidateVotes = post.candidates.map((candidate) => {
+        const voteCount = votes.filter((v) => v.candidateId === candidate.id).length;
+        return {
+          candidateId: candidate.id,
+          candidateName: candidate.name,
+          voteCount,
+        };
+      });
+
+      candidateVotes.sort((a, b) => b.voteCount - a.voteCount);
+      const winner = candidateVotes.length > 0 && candidateVotes[0].voteCount > 0
+        ? candidateVotes[0]
+        : undefined;
+
+      return {
+        postId: post.id,
+        postTitle: post.title,
+        candidates: candidateVotes,
+        winner,
+      };
+    });
+
+    const uniqueVoters = new Set(votes.map((v) => v.voterId)).size;
+    return {
+      electionId: election.id,
+      electionTitle: election.title,
+      totalVoters: uniqueVoters,
+      posts: postResults,
+    };
+  }
+
   // Get election results
   app.get("/api/elections/:id/results", requireAuth, async (req, res) => {
     try {
@@ -483,46 +521,139 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
         return res.status(403).json({ error: "Results not published yet" });
       }
 
-      const votes = await storage.getVotesByElection(id);
-
-      // Calculate results
-      const postResults: PostResult[] = election.posts.map((post) => {
-        const candidateVotes = post.candidates.map((candidate) => {
-          const voteCount = votes.filter((v) => v.candidateId === candidate.id).length;
-          return {
-            candidateId: candidate.id,
-            candidateName: candidate.name,
-            voteCount,
-          };
-        });
-
-        // Sort by votes and find winner
-        candidateVotes.sort((a, b) => b.voteCount - a.voteCount);
-        const winner = candidateVotes.length > 0 && candidateVotes[0].voteCount > 0
-          ? candidateVotes[0]
-          : undefined;
-
-        return {
-          postId: post.id,
-          postTitle: post.title,
-          candidates: candidateVotes,
-          winner,
-        };
-      });
-
-      // Count unique voters
-      const uniqueVoters = new Set(votes.map((v) => v.voterId)).size;
-
-      const result: ElectionResult = {
-        electionId: election.id,
-        electionTitle: election.title,
-        totalVoters: uniqueVoters,
-        posts: postResults,
-      };
-
+      const result = await generateElectionResults(id);
       res.json(result);
     } catch (error) {
       console.error("Get results error:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
+
+  // Export results as CSV
+  app.get("/api/elections/:id/export/csv", requireAdmin, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const result = await generateElectionResults(id);
+      
+      if (!result) {
+        return res.status(404).json({ error: "Election not found" });
+      }
+
+      let csv = `Election: ${result.electionTitle}\n`;
+      csv += `Total Voters: ${result.totalVoters}\n`;
+      csv += `Export Date: ${new Date().toISOString()}\n\n`;
+
+      result.posts.forEach((post) => {
+        csv += `\nPost: ${post.postTitle}\n`;
+        csv += "Candidate,Votes,Percentage\n";
+        const totalVotes = post.candidates.reduce((sum, c) => sum + c.voteCount, 0);
+        
+        post.candidates
+          .sort((a, b) => b.voteCount - a.voteCount)
+          .forEach((candidate) => {
+            const percentage = totalVotes > 0 ? ((candidate.voteCount / totalVotes) * 100).toFixed(2) : "0.00";
+            csv += `"${candidate.candidateName}",${candidate.voteCount},${percentage}%\n`;
+          });
+      });
+
+      res.setHeader("Content-Type", "text/csv");
+      res.setHeader("Content-Disposition", `attachment; filename="election-results-${id}.csv"`);
+      res.send(csv);
+    } catch (error) {
+      console.error("Export CSV error:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
+
+  // Export results as HTML (printable as PDF)
+  app.get("/api/elections/:id/export/pdf", requireAdmin, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const result = await generateElectionResults(id);
+      
+      if (!result) {
+        return res.status(404).json({ error: "Election not found" });
+      }
+
+      const html = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Election Results - ${result.electionTitle}</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; color: #333; }
+    h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+    .summary { background: #ecf0f1; padding: 15px; border-radius: 5px; margin: 20px 0; }
+    .post { page-break-inside: avoid; margin: 30px 0; padding: 20px; border: 1px solid #bdc3c7; border-radius: 5px; }
+    .post h2 { color: #2c3e50; margin-top: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+    th { background: #3498db; color: white; }
+    tr:hover { background: #f5f5f5; }
+    .winner { background: #f1c40f; font-weight: bold; }
+    .footer { margin-top: 40px; text-align: center; color: #7f8c8d; font-size: 12px; border-top: 1px solid #ddd; padding-top: 20px; }
+    @media print { body { margin: 0; } }
+  </style>
+</head>
+<body>
+  <h1>Election Results Report</h1>
+  
+  <div class="summary">
+    <strong>Election:</strong> ${result.electionTitle}<br>
+    <strong>Total Voters:</strong> ${result.totalVoters}<br>
+    <strong>Generated:</strong> ${new Date().toLocaleString()}
+  </div>
+
+  ${result.posts.map((post) => {
+    const totalVotes = post.candidates.reduce((sum, c) => sum + c.voteCount, 0);
+    return `
+    <div class="post">
+      <h2>${post.postTitle}</h2>
+      <p><strong>Total Votes:</strong> ${totalVotes}</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Candidate</th>
+            <th>Votes</th>
+            <th>Percentage</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${post.candidates
+            .sort((a, b) => b.voteCount - a.voteCount)
+            .map((candidate, index) => {
+              const percentage = totalVotes > 0 ? ((candidate.voteCount / totalVotes) * 100).toFixed(2) : "0.00";
+              const isWinner = post.winner?.candidateId === candidate.candidateId;
+              return `
+              <tr${isWinner ? ' class="winner"' : ''}>
+                <td>${candidate.candidateName}</td>
+                <td>${candidate.voteCount}</td>
+                <td>${percentage}%</td>
+                <td>${isWinner ? "WINNER" : ""}</td>
+              </tr>
+            `;
+            }).join("")}
+        </tbody>
+      </table>
+    </div>
+    `;
+  }).join("")}
+
+  <div class="footer">
+    <p>This report was generated by SchoolVote on ${new Date().toLocaleString()}</p>
+    <p>School Online Voting System</p>
+  </div>
+</body>
+</html>
+      `;
+
+      res.setHeader("Content-Type", "text/html; charset=utf-8");
+      res.setHeader("Content-Disposition", `attachment; filename="election-results-${id}.html"`);
+      res.send(html);
+    } catch (error) {
+      console.error("Export PDF error:", error);
       res.status(500).json({ error: "Internal server error" });
     }
   });

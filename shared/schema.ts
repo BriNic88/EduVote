@@ -85,6 +85,7 @@ export const insertPostSchema = z.object({
 export const insertCandidateSchema = z.object({
   name: z.string().min(2, "Candidate name must be at least 2 characters"),
   description: z.string().min(10, "Description must be at least 10 characters"),
+  photoUrl: z.string().optional(),
 });
 
 export type InsertElection = z.infer<typeof insertElectionSchema>;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { Trophy, Eye, EyeOff, BarChart3, Users, Calendar } from "lucide-react";
+import { Trophy, Eye, EyeOff, BarChart3, Users, Calendar, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -147,7 +147,7 @@ export default function AdminResults() {
           <LoadingPage message="Loading results..." />
         ) : results ? (
           <div className="space-y-6">
-            {/* Summary Card */}
+            {/* Summary Card with Export Options */}
             <Card>
               <CardContent className="p-6">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -166,16 +166,52 @@ export default function AdminResults() {
                       )}
                     </div>
                   </div>
-                  {currentElection && (
-                    <div className="flex items-center gap-2">
-                      <ElectionStatusBadge status={getElectionStatus(currentElection)} />
-                      {currentElection.resultsPublished && (
-                        <Badge className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
-                          Published
-                        </Badge>
-                      )}
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                    {currentElection && (
+                      <div className="flex items-center gap-2">
+                        <ElectionStatusBadge status={getElectionStatus(currentElection)} />
+                        {currentElection.resultsPublished && (
+                          <Badge className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                            Published
+                          </Badge>
+                        )}
+                      </div>
+                    )}
+                    <div className="flex gap-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          const link = document.createElement("a");
+                          link.href = `/api/elections/${selectedElection}/export/csv`;
+                          link.download = `election-results-${selectedElection}.csv`;
+                          document.body.appendChild(link);
+                          link.click();
+                          document.body.removeChild(link);
+                        }}
+                        data-testid="button-export-csv"
+                      >
+                        <Download className="h-4 w-4 mr-2" />
+                        CSV
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          const link = document.createElement("a");
+                          link.href = `/api/elections/${selectedElection}/export/pdf`;
+                          link.download = `election-results-${selectedElection}.html`;
+                          document.body.appendChild(link);
+                          link.click();
+                          document.body.removeChild(link);
+                        }}
+                        data-testid="button-export-html"
+                      >
+                        <Download className="h-4 w-4 mr-2" />
+                        PDF
+                      </Button>
                     </div>
-                  )}
+                  </div>
                 </div>
               </CardContent>
             </Card>
