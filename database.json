@@ -32,6 +32,16 @@
       "className": "Grade 10A",
       "status": "approved",
       "hasVoted": []
+    },
+    {
+      "id": "b1e50bdd-8e2e-40d2-a113-f7d8b3df1243",
+      "role": "student",
+      "email": "jones.kimutai@mpesafoundationacademy.ac.ke",
+      "password": "123456",
+      "fullName": "Jones Kimutai",
+      "className": "Grade 12B",
+      "status": "pending",
+      "hasVoted": []
     }
   ],
   "elections": [
