@@ -17,10 +17,20 @@
       "password": "4adjTPRGNbAitKQ",
       "fullName": "baraka ",
       "className": "Grade 9A",
-      "status": "blocked",
+      "status": "approved",
       "hasVoted": [
         "8e4741fb-72c0-4527-bc38-085ed3def10b"
       ]
+    },
+    {
+      "id": "d9c346da-3428-4dd5-b326-a33f7d677dcb",
+      "role": "student",
+      "email": "brianbaraka795@gmail.com",
+      "password": "123456",
+      "fullName": "Brian Baraka",
+      "className": "Grade 10A",
+      "status": "approved",
+      "hasVoted": []
     }
   ],
   "elections": [
@@ -49,6 +59,15 @@
           ]
         }
       ]
+    },
+    {
+      "id": "942f6e3b-b465-4b3a-a997-fe955a8ab90f",
+      "title": "residential cordinator",
+      "description": "I will bring change to the residence",
+      "startTime": "2025-12-02T05:40:00.000Z",
+      "endTime": "2025-12-02T05:50:00.000Z",
+      "resultsPublished": false,
+      "posts": []
     }
   ],
   "votes": [
