@@ -28,7 +28,12 @@ function loadDatabase(): Database {
   try {
     if (fs.existsSync(DB_PATH)) {
       const data = fs.readFileSync(DB_PATH, "utf-8");
-      return JSON.parse(data);
+      const loaded = JSON.parse(data) as Partial<Database>;
+      // Ensure passwordResets field exists
+      if (!loaded.passwordResets) {
+        loaded.passwordResets = {};
+      }
+      return loaded as Database;
     }
   } catch (error) {
     console.error("Error loading database:", error);

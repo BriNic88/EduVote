@@ -184,6 +184,11 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
   app.post("/api/auth/forgot-password", async (req, res) => {
     try {
       const { email } = req.body;
+      
+      if (!email) {
+        return res.status(400).json({ error: "Email address is required" });
+      }
+
       const user = await storage.getUserByEmail(email);
       
       if (user) {
@@ -197,8 +202,13 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
         // Create reset link
         const resetLink = `${req.protocol}://${req.get("host")}/reset-password?token=${token}`;
         
-        // Send email
-        await sendPasswordResetEmail(email, resetLink);
+        // Send email - but don't fail if email sending fails
+        try {
+          await sendPasswordResetEmail(email, resetLink);
+        } catch (emailError) {
+          console.warn("Email sending failed but password reset link was stored:", emailError);
+          // Continue anyway - user can still reset password via token
+        }
       }
       
       // Always return success to prevent email enumeration

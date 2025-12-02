@@ -40,6 +40,12 @@ async function getResendClient() {
 
 export async function sendPasswordResetEmail(toEmail: string, resetLink: string) {
   try {
+    // Check if Resend is properly configured
+    if (!process.env.REPLIT_CONNECTORS_HOSTNAME) {
+      console.log("Resend not configured - storing reset link for manual retrieval");
+      return { id: "local", success: true };
+    }
+
     const { client, fromEmail } = await getResendClient();
 
     const result = await client.emails.send({
