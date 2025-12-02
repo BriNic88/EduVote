@@ -36,7 +36,7 @@ export function AdminLayout({ children, title }: AdminLayoutProps) {
       <div className="flex items-center gap-2 px-4 py-6 border-b border-sidebar-border">
         <Vote className="h-6 w-6 text-primary" />
         <div>
-          <span className="font-semibold text-lg block">SchoolVote</span>
+          <span className="font-semibold text-lg block">EduVote</span>
           <span className="text-xs text-muted-foreground">Admin Portal</span>
         </div>
       </div>

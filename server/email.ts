@@ -51,7 +51,7 @@ export async function sendPasswordResetEmail(toEmail: string, resetLink: string)
     const result = await client.emails.send({
       from: fromEmail,
       to: toEmail,
-      subject: 'Reset Your SchoolVote Password',
+      subject: 'Reset Your EduVote Password',
       html: `
         <!DOCTYPE html>
         <html>
@@ -69,11 +69,11 @@ export async function sendPasswordResetEmail(toEmail: string, resetLink: string)
           <body>
             <div class="container">
               <div class="header">
-                <h1>SchoolVote Password Reset</h1>
+                <h1>EduVote Password Reset</h1>
               </div>
               <div class="content">
                 <p>Hello,</p>
-                <p>We received a request to reset your SchoolVote password. Click the button below to create a new password:</p>
+                <p>We received a request to reset your EduVote password. Click the button below to create a new password:</p>
                 <p style="text-align: center;">
                   <a href="${resetLink}" class="button">Reset Password</a>
                 </p>
@@ -81,10 +81,10 @@ export async function sendPasswordResetEmail(toEmail: string, resetLink: string)
                 <p><code>${resetLink}</code></p>
                 <p>This link will expire in 24 hours.</p>
                 <p>If you didn't request this, you can safely ignore this email.</p>
-                <p>Best regards,<br>SchoolVote Team</p>
+                <p>Best regards,<br>EduVote Team</p>
               </div>
               <div class="footer">
-                <p>© 2024 School Online Voting System. All rights reserved.</p>
+                <p>© 2024 EduVote Online Voting System. All rights reserved.</p>
               </div>
             </div>
           </body>
@@ -106,7 +106,7 @@ export async function sendWelcomeEmail(toEmail: string, studentName: string) {
     const result = await client.emails.send({
       from: fromEmail,
       to: toEmail,
-      subject: 'Welcome to SchoolVote - Your Account is Pending Approval',
+      subject: 'Welcome to EduVote - Your Account is Pending Approval',
       html: `
         <!DOCTYPE html>
         <html>
@@ -123,18 +123,18 @@ export async function sendWelcomeEmail(toEmail: string, studentName: string) {
           <body>
             <div class="container">
               <div class="header">
-                <h1>Welcome to SchoolVote</h1>
+                <h1>Welcome to EduVote</h1>
               </div>
               <div class="content">
                 <p>Hello ${studentName},</p>
-                <p>Thank you for registering with SchoolVote! Your account has been created successfully.</p>
+                <p>Thank you for registering with EduVote! Your account has been created successfully.</p>
                 <p><strong>Your account status:</strong> Pending Approval</p>
                 <p>An administrator will review your account and you'll be notified once it's approved. Once approved, you'll be able to participate in school elections and cast your vote.</p>
                 <p>You can log in anytime to view upcoming elections and your profile.</p>
-                <p>Best regards,<br>SchoolVote Team</p>
+                <p>Best regards,<br>EduVote Team</p>
               </div>
               <div class="footer">
-                <p>© 2024 School Online Voting System. All rights reserved.</p>
+                <p>© 2024 EduVote Online Voting System. All rights reserved.</p>
               </div>
             </div>
           </body>

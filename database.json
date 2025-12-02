@@ -19,7 +19,8 @@
       "className": "Grade 9A",
       "status": "approved",
       "hasVoted": [
-        "8e4741fb-72c0-4527-bc38-085ed3def10b"
+        "8e4741fb-72c0-4527-bc38-085ed3def10b",
+        "942f6e3b-b465-4b3a-a997-fe955a8ab90f"
       ]
     },
     {
@@ -64,8 +65,8 @@
       "id": "942f6e3b-b465-4b3a-a997-fe955a8ab90f",
       "title": "residential cordinator",
       "description": "I will bring change to the residence",
-      "startTime": "2025-12-02T05:40:00.000Z",
-      "endTime": "2025-12-02T05:50:00.000Z",
+      "startTime": "2025-12-02T05:50:00.000Z",
+      "endTime": "2025-12-02T05:55:00.000Z",
       "resultsPublished": false,
       "posts": []
     }
@@ -84,6 +85,10 @@
     "27aafcf03ea3974a6f6b41b5db5b5fb1c2a65c3eb5f659b17acf2ad2dcc3e2cf": {
       "email": "brian.baraka@mpesafoundationacademy.ac.ke",
       "expiry": 1764740903450
+    },
+    "450b592c58baf2b0f3fa737bf96eb670fc3566a249d31a93ccbe4053fdbdd91f": {
+      "email": "brian.baraka@mpesafoundationacademy.ac.ke",
+      "expiry": 1764741651517
     }
   }
 }
