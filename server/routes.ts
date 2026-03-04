@@ -4,6 +4,7 @@ import session from "express-session";
 import { randomBytes } from "crypto";
 import { storage } from "./storage";
 import { sendPasswordResetEmail } from "./email";
+import { sysLog } from "./logger";
 import {
   loginStudentSchema,
   loginAdminSchema,
@@ -89,10 +90,12 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
       const user = await storage.getUserByEmail(email);
 
       if (!user || user.role !== "student") {
+        sysLog(req, "Student login attempt", "failure", { email }, "Invalid email or role");
         return res.status(401).json({ error: "Invalid email or password" });
       }
 
       if (user.password !== password) {
+        sysLog(req, "Student login attempt", "failure", { email }, "Invalid password");
         return res.status(401).json({ error: "Invalid email or password" });
       }
 
@@ -106,8 +109,10 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
       };
 
       req.session.user = sessionUser;
+      sysLog(req, "Student login", "success", { userId: user.id });
       res.json({ user: { ...sessionUser, hasVoted: user.hasVoted } });
-    } catch (error) {
+    } catch (error: any) {
+      sysLog(req, "Student login", "failure", {}, error.message);
       console.error("Login error:", error);
       res.status(500).json({ error: "Internal server error" });
     }
@@ -125,10 +130,12 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
       const user = await storage.getUserByAdminId(adminId);
 
       if (!user || user.role !== "admin") {
+        sysLog(req, "Admin login attempt", "failure", { adminId }, "Invalid admin ID or role");
         return res.status(401).json({ error: "Invalid admin ID or password" });
       }
 
       if (user.password !== password) {
+        sysLog(req, "Admin login attempt", "failure", { adminId }, "Invalid password");
         return res.status(401).json({ error: "Invalid admin ID or password" });
       }
 
@@ -142,8 +149,10 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
       };
 
       req.session.user = sessionUser;
+      sysLog(req, "Admin login", "success", { userId: user.id });
       res.json({ user: sessionUser });
-    } catch (error) {
+    } catch (error: any) {
+      sysLog(req, "Admin login", "failure", {}, error.message);
       console.error("Login error:", error);
       res.status(500).json({ error: "Internal server error" });
     }
@@ -159,12 +168,15 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
       const existingUser = await storage.getUserByEmail(result.data.email);
       if (existingUser) {
+        sysLog(req, "Student registration", "failure", { email: result.data.email }, "Email already registered");
         return res.status(400).json({ error: "Email already registered" });
       }
 
       const user = await storage.createStudent(result.data);
+      sysLog(req, "Student registration", "success", { userId: user.id, email: user.email });
       res.status(201).json({ message: "Registration successful", userId: user.id });
-    } catch (error) {
+    } catch (error: any) {
+      sysLog(req, "Student registration", "failure", {}, error.message);
       console.error("Registration error:", error);
       res.status(500).json({ error: "Internal server error" });
     }
@@ -172,10 +184,13 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
 
   // Logout
   app.post("/api/auth/logout", (req, res) => {
+    const userId = req.session.user?.id;
     req.session.destroy((err) => {
       if (err) {
+        sysLog(req, "Logout", "failure", { userId }, err.message);
         return res.status(500).json({ error: "Failed to logout" });
       }
+      sysLog(req, "Logout", "success", { userId });
       res.json({ message: "Logged out successfully" });
     });
   });
@@ -421,8 +436,10 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
       }
 
       const election = await storage.createElection(result.data);
+      sysLog(req, "Create election", "success", { electionId: election.id, title: election.title });
       res.status(201).json(election);
-    } catch (error) {
+    } catch (error: any) {
+      sysLog(req, "Create election", "failure", {}, error.message);
       console.error("Create election error:", error);
       res.status(500).json({ error: "Internal server error" });
     }
@@ -873,8 +890,10 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
         } as any;
       }
 
+      sysLog(req, "Vote cast", "success", { electionId, voteCount: votes.length });
       res.status(201).json({ message: "Vote cast successfully", votes: castVotes });
-    } catch (error) {
+    } catch (error: any) {
+      sysLog(req, "Vote cast", "failure", { electionId: req.params.id }, error.message);
       console.error("Cast vote error:", error);
       res.status(500).json({ error: "Internal server error" });
     }
