@@ -201,6 +201,7 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
       const { email } = req.body;
       
       if (!email) {
+        sysLog(req, "Forgot password request", "failure", { email }, "Email address is required");
         return res.status(400).json({ error: "Email address is required" });
       }
 
@@ -217,18 +218,23 @@ export async function registerRoutes(httpServer: Server, app: Express): Promise<
         // Create reset link
         const resetLink = `${req.protocol}://${req.get("host")}/reset-password?token=${token}`;
         
-        // Send email - but don't fail if email sending fails
+        // Send email - log outcome
         try {
-          await sendPasswordResetEmail(email, resetLink);
-        } catch (emailError) {
-          console.warn("Email sending failed but password reset link was stored:", emailError);
-          // Continue anyway - user can still reset password via token
+          const emailResult = await sendPasswordResetEmail(email, resetLink);
+          sysLog(req, "Forgot password request", "success", { email, messageId: emailResult.id });
+        } catch (emailError: any) {
+          console.error("[CRITICAL] Password reset email failed. User will not receive reset link:", emailError.message);
+          sysLog(req, "Forgot password request", "failure", { email }, `Email sending failed: ${emailError.message}`);
+          // Note: We still return success to prevent email enumeration, but the user won't receive the email
         }
+      } else {
+        sysLog(req, "Forgot password request", "success", { email: "non-existent" });
       }
       
       // Always return success to prevent email enumeration
       res.json({ message: "If an account exists with that email address, we've sent password reset instructions. Please check your inbox and spam folder." });
-    } catch (error) {
+    } catch (error: any) {
+      sysLog(req, "Forgot password request", "failure", {}, error.message);
       console.error("Forgot password error:", error);
       res.status(500).json({ error: "Internal server error" });
     }

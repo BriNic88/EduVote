@@ -1,0 +1,535 @@
+[
+  {
+    "timestamp": "2026-03-08T07:45:14.515Z",
+    "user": {
+      "id": "1c892b02-bc82-4b98-ac67-f1be532b5130",
+      "role": "admin",
+      "email": "admin@school.edu"
+    },
+    "action": "Admin login",
+    "status": "success",
+    "details": {
+      "userId": "1c892b02-bc82-4b98-ac67-f1be532b5130"
+    }
+  },
+  {
+    "timestamp": "2026-03-09T09:31:20.727Z",
+    "user": {
+      "id": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f",
+      "role": "student",
+      "email": "brian.baraka@mpesafoundationacademy.ac.ke"
+    },
+    "action": "Student login",
+    "status": "success",
+    "details": {
+      "userId": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f"
+    }
+  },
+  {
+    "timestamp": "2026-03-09T09:32:23.224Z",
+    "user": {
+      "id": "Anonymous",
+      "role": "Anonymous",
+      "email": "Anonymous"
+    },
+    "action": "Logout",
+    "status": "success",
+    "details": {
+      "userId": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f"
+    }
+  },
+  {
+    "timestamp": "2026-03-09T09:32:43.656Z",
+    "user": {
+      "id": "1c892b02-bc82-4b98-ac67-f1be532b5130",
+      "role": "admin",
+      "email": "admin@school.edu"
+    },
+    "action": "Admin login",
+    "status": "success",
+    "details": {
+      "userId": "1c892b02-bc82-4b98-ac67-f1be532b5130"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T11:49:36.897Z",
+    "user": {
+      "id": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f",
+      "role": "student",
+      "email": "brian.baraka@mpesafoundationacademy.ac.ke"
+    },
+    "action": "Student login",
+    "status": "success",
+    "details": {
+      "userId": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T13:54:56.917Z",
+    "user": {
+      "id": "1c892b02-bc82-4b98-ac67-f1be532b5130",
+      "role": "admin",
+      "email": "admin@school.edu"
+    },
+    "action": "Admin login",
+    "status": "success",
+    "details": {
+      "userId": "1c892b02-bc82-4b98-ac67-f1be532b5130"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T13:56:37.551Z",
+    "user": {
+      "id": "1c892b02-bc82-4b98-ac67-f1be532b5130",
+      "role": "admin",
+      "email": "admin@school.edu"
+    },
+    "action": "Create election",
+    "status": "success",
+    "details": {
+      "electionId": "ba4d65e9-440d-4a6b-81ef-7be33c3b1e1d",
+      "title": "Headboy 2024/2025"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T13:58:46.083Z",
+    "user": {
+      "id": "Anonymous",
+      "role": "Anonymous",
+      "email": "Anonymous"
+    },
+    "action": "Logout",
+    "status": "success",
+    "details": {
+      "userId": "1c892b02-bc82-4b98-ac67-f1be532b5130"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T13:58:58.217Z",
+    "user": {
+      "id": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f",
+      "role": "student",
+      "email": "brian.baraka@mpesafoundationacademy.ac.ke"
+    },
+    "action": "Student login",
+    "status": "success",
+    "details": {
+      "userId": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T13:59:11.146Z",
+    "user": {
+      "id": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f",
+      "role": "student",
+      "email": "brian.baraka@mpesafoundationacademy.ac.ke"
+    },
+    "action": "Vote cast",
+    "status": "success",
+    "details": {
+      "electionId": "ba4d65e9-440d-4a6b-81ef-7be33c3b1e1d",
+      "voteCount": 1
+    }
+  },
+  {
+    "timestamp": "2026-03-10T13:59:28.615Z",
+    "user": {
+      "id": "Anonymous",
+      "role": "Anonymous",
+      "email": "Anonymous"
+    },
+    "action": "Logout",
+    "status": "success",
+    "details": {
+      "userId": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T13:59:38.425Z",
+    "user": {
+      "id": "d9c346da-3428-4dd5-b326-a33f7d677dcb",
+      "role": "student",
+      "email": "brianbaraka795@gmail.com"
+    },
+    "action": "Student login",
+    "status": "success",
+    "details": {
+      "userId": "d9c346da-3428-4dd5-b326-a33f7d677dcb"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T13:59:48.523Z",
+    "user": {
+      "id": "d9c346da-3428-4dd5-b326-a33f7d677dcb",
+      "role": "student",
+      "email": "brianbaraka795@gmail.com"
+    },
+    "action": "Vote cast",
+    "status": "success",
+    "details": {
+      "electionId": "ba4d65e9-440d-4a6b-81ef-7be33c3b1e1d",
+      "voteCount": 1
+    }
+  },
+  {
+    "timestamp": "2026-03-10T13:59:51.475Z",
+    "user": {
+      "id": "Anonymous",
+      "role": "Anonymous",
+      "email": "Anonymous"
+    },
+    "action": "Logout",
+    "status": "success",
+    "details": {
+      "userId": "d9c346da-3428-4dd5-b326-a33f7d677dcb"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T14:00:02.105Z",
+    "user": {
+      "id": "b1e50bdd-8e2e-40d2-a113-f7d8b3df1243",
+      "role": "student",
+      "email": "jones.kimutai@mpesafoundationacademy.ac.ke"
+    },
+    "action": "Student login",
+    "status": "success",
+    "details": {
+      "userId": "b1e50bdd-8e2e-40d2-a113-f7d8b3df1243"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T14:00:10.886Z",
+    "user": {
+      "id": "b1e50bdd-8e2e-40d2-a113-f7d8b3df1243",
+      "role": "student",
+      "email": "jones.kimutai@mpesafoundationacademy.ac.ke"
+    },
+    "action": "Vote cast",
+    "status": "success",
+    "details": {
+      "electionId": "ba4d65e9-440d-4a6b-81ef-7be33c3b1e1d",
+      "voteCount": 1
+    }
+  },
+  {
+    "timestamp": "2026-03-10T14:00:14.389Z",
+    "user": {
+      "id": "Anonymous",
+      "role": "Anonymous",
+      "email": "Anonymous"
+    },
+    "action": "Logout",
+    "status": "success",
+    "details": {
+      "userId": "b1e50bdd-8e2e-40d2-a113-f7d8b3df1243"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T14:00:25.829Z",
+    "user": {
+      "id": "61bdb299-9d8d-4e68-9562-c655b066d454",
+      "role": "student",
+      "email": "shaban.cheruiyot@mpesafoundationacademy.ac.ke"
+    },
+    "action": "Student login",
+    "status": "success",
+    "details": {
+      "userId": "61bdb299-9d8d-4e68-9562-c655b066d454"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T14:00:34.976Z",
+    "user": {
+      "id": "61bdb299-9d8d-4e68-9562-c655b066d454",
+      "role": "student",
+      "email": "shaban.cheruiyot@mpesafoundationacademy.ac.ke"
+    },
+    "action": "Vote cast",
+    "status": "success",
+    "details": {
+      "electionId": "ba4d65e9-440d-4a6b-81ef-7be33c3b1e1d",
+      "voteCount": 1
+    }
+  },
+  {
+    "timestamp": "2026-03-10T14:01:19.568Z",
+    "user": {
+      "id": "Anonymous",
+      "role": "Anonymous",
+      "email": "Anonymous"
+    },
+    "action": "Logout",
+    "status": "success",
+    "details": {
+      "userId": "61bdb299-9d8d-4e68-9562-c655b066d454"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T14:01:35.409Z",
+    "user": {
+      "id": "1c892b02-bc82-4b98-ac67-f1be532b5130",
+      "role": "admin",
+      "email": "admin@school.edu"
+    },
+    "action": "Admin login",
+    "status": "success",
+    "details": {
+      "userId": "1c892b02-bc82-4b98-ac67-f1be532b5130"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T14:06:42.610Z",
+    "user": {
+      "id": "Anonymous",
+      "role": "Anonymous",
+      "email": "Anonymous"
+    },
+    "action": "Logout",
+    "status": "success",
+    "details": {
+      "userId": "1c892b02-bc82-4b98-ac67-f1be532b5130"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T14:06:54.956Z",
+    "user": {
+      "id": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f",
+      "role": "student",
+      "email": "brian.baraka@mpesafoundationacademy.ac.ke"
+    },
+    "action": "Student login",
+    "status": "success",
+    "details": {
+      "userId": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T14:25:11.145Z",
+    "user": {
+      "id": "Anonymous",
+      "role": "Anonymous",
+      "email": "Anonymous"
+    },
+    "action": "Admin login attempt",
+    "status": "failure",
+    "details": {
+      "adminId": "brian.baraka@mpesafoundationacademy.ac.ke"
+    },
+    "error": "Invalid admin ID or role"
+  },
+  {
+    "timestamp": "2026-03-10T14:25:18.334Z",
+    "user": {
+      "id": "1c892b02-bc82-4b98-ac67-f1be532b5130",
+      "role": "admin",
+      "email": "admin@school.edu"
+    },
+    "action": "Admin login",
+    "status": "success",
+    "details": {
+      "userId": "1c892b02-bc82-4b98-ac67-f1be532b5130"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T14:25:57.023Z",
+    "user": {
+      "id": "1c892b02-bc82-4b98-ac67-f1be532b5130",
+      "role": "admin",
+      "email": "admin@school.edu"
+    },
+    "action": "Create election",
+    "status": "success",
+    "details": {
+      "electionId": "bd363f1b-5b25-430d-9087-d93359690eec",
+      "title": "Head Girl"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T14:28:09.793Z",
+    "user": {
+      "id": "Anonymous",
+      "role": "Anonymous",
+      "email": "Anonymous"
+    },
+    "action": "Logout",
+    "status": "success",
+    "details": {
+      "userId": "1c892b02-bc82-4b98-ac67-f1be532b5130"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T14:28:22.066Z",
+    "user": {
+      "id": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f",
+      "role": "student",
+      "email": "brian.baraka@mpesafoundationacademy.ac.ke"
+    },
+    "action": "Student login",
+    "status": "success",
+    "details": {
+      "userId": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T15:46:13.371Z",
+    "user": {
+      "id": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f",
+      "role": "student",
+      "email": "brian.baraka@mpesafoundationacademy.ac.ke"
+    },
+    "action": "Student login",
+    "status": "success",
+    "details": {
+      "userId": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T16:03:40.351Z",
+    "user": {
+      "id": "Anonymous",
+      "role": "Anonymous",
+      "email": "Anonymous"
+    },
+    "action": "Logout",
+    "status": "success",
+    "details": {
+      "userId": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T16:05:17.687Z",
+    "user": {
+      "id": "Anonymous",
+      "role": "Anonymous",
+      "email": "Anonymous"
+    },
+    "action": "Student registration",
+    "status": "failure",
+    "details": {
+      "email": "brian.baraka@mpesafoundationacademy.ac.ke"
+    },
+    "error": "Email already registered"
+  },
+  {
+    "timestamp": "2026-03-10T16:05:50.273Z",
+    "user": {
+      "id": "Anonymous",
+      "role": "Anonymous",
+      "email": "Anonymous"
+    },
+    "action": "Student registration",
+    "status": "failure",
+    "details": {
+      "email": "brian.baraka@mpesafoundationacademy.ac.ke"
+    },
+    "error": "Email already registered"
+  },
+  {
+    "timestamp": "2026-03-10T16:21:06.149Z",
+    "user": {
+      "id": "1c892b02-bc82-4b98-ac67-f1be532b5130",
+      "role": "admin",
+      "email": "admin@school.edu"
+    },
+    "action": "Admin login",
+    "status": "success",
+    "details": {
+      "userId": "1c892b02-bc82-4b98-ac67-f1be532b5130"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T16:31:11.949Z",
+    "user": {
+      "id": "Anonymous",
+      "role": "Anonymous",
+      "email": "Anonymous"
+    },
+    "action": "Logout",
+    "status": "success",
+    "details": {
+      "userId": "1c892b02-bc82-4b98-ac67-f1be532b5130"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T16:31:23.201Z",
+    "user": {
+      "id": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f",
+      "role": "student",
+      "email": "brian.baraka@mpesafoundationacademy.ac.ke"
+    },
+    "action": "Student login",
+    "status": "success",
+    "details": {
+      "userId": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f"
+    }
+  },
+  {
+    "timestamp": "2026-03-10T16:32:04.975Z",
+    "user": {
+      "id": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f",
+      "role": "student",
+      "email": "brian.baraka@mpesafoundationacademy.ac.ke"
+    },
+    "action": "Vote cast",
+    "status": "success",
+    "details": {
+      "electionId": "bd363f1b-5b25-430d-9087-d93359690eec",
+      "voteCount": 1
+    }
+  },
+  {
+    "timestamp": "2026-03-10T16:33:56.052Z",
+    "user": {
+      "id": "Anonymous",
+      "role": "Anonymous",
+      "email": "Anonymous"
+    },
+    "action": "Logout",
+    "status": "success",
+    "details": {
+      "userId": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f"
+    }
+  },
+  {
+    "timestamp": "2026-03-11T05:27:04.538Z",
+    "user": {
+      "id": "Anonymous",
+      "role": "Anonymous",
+      "email": "Anonymous"
+    },
+    "action": "Student login attempt",
+    "status": "failure",
+    "details": {
+      "email": "brian.baraka@mpesafoundationacademy.ac.ke"
+    },
+    "error": "Invalid password"
+  },
+  {
+    "timestamp": "2026-03-11T05:27:08.035Z",
+    "user": {
+      "id": "Anonymous",
+      "role": "Anonymous",
+      "email": "Anonymous"
+    },
+    "action": "Student login attempt",
+    "status": "failure",
+    "details": {
+      "email": "brian.baraka@mpesafoundationacademy.ac.ke"
+    },
+    "error": "Invalid password"
+  },
+  {
+    "timestamp": "2026-03-11T05:28:00.131Z",
+    "user": {
+      "id": "Anonymous",
+      "role": "Anonymous",
+      "email": "Anonymous"
+    },
+    "action": "Admin login attempt",
+    "status": "failure",
+    "details": {
+      "adminId": "admin"
+    },
+    "error": "Invalid password"
+  }
+]

@@ -40,13 +40,17 @@ async function getResendClient() {
 
 export async function sendPasswordResetEmail(toEmail: string, resetLink: string) {
   try {
+    console.log('[Email] Attempting to send password reset email to:', toEmail);
+    console.log('[Email] REPLIT_CONNECTORS_HOSTNAME:', process.env.REPLIT_CONNECTORS_HOSTNAME ? 'SET' : 'NOT SET');
+
     // Check if Resend is properly configured
     if (!process.env.REPLIT_CONNECTORS_HOSTNAME) {
-      console.log("Resend not configured - storing reset link for manual retrieval");
-      return { id: "local", success: true };
+      console.error('[Email] ERROR: Resend connector hostname not found. Email service is not configured.');
+      throw new Error('Resend email service is not configured. Please check Replit integration settings.');
     }
 
     const { client, fromEmail } = await getResendClient();
+    console.log('[Email] Resend client initialized. Sending from:', fromEmail);
 
     const result = await client.emails.send({
       from: fromEmail,
@@ -92,9 +96,10 @@ export async function sendPasswordResetEmail(toEmail: string, resetLink: string)
       `
     });
 
+    console.log('[Email] Password reset email sent successfully. Message ID:', result.id);
     return result;
-  } catch (error) {
-    console.error('Error sending email:', error);
+  } catch (error: any) {
+    console.error('[Email] Failed to send password reset email:', error.message || error);
     throw error;
   }
 }

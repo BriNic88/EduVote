@@ -15,12 +15,12 @@
       "role": "student",
       "email": "brian.baraka@mpesafoundationacademy.ac.ke",
       "password": "4adjTPRGNbAitKQ",
-      "fullName": "baraka ",
+      "fullName": "Brian Baraka",
       "className": "Grade 9A",
-      "status": "blocked",
+      "status": "approved",
       "hasVoted": [
-        "8e4741fb-72c0-4527-bc38-085ed3def10b",
-        "942f6e3b-b465-4b3a-a997-fe955a8ab90f"
+        "ba4d65e9-440d-4a6b-81ef-7be33c3b1e1d",
+        "bd363f1b-5b25-430d-9087-d93359690eec"
       ]
     },
     {
@@ -31,7 +31,9 @@
       "fullName": "Brian Baraka",
       "className": "Grade 10A",
       "status": "approved",
-      "hasVoted": []
+      "hasVoted": [
+        "ba4d65e9-440d-4a6b-81ef-7be33c3b1e1d"
+      ]
     },
     {
       "id": "b1e50bdd-8e2e-40d2-a113-f7d8b3df1243",
@@ -41,7 +43,9 @@
       "fullName": "Jones Kimutai",
       "className": "Grade 12B",
       "status": "approved",
-      "hasVoted": []
+      "hasVoted": [
+        "ba4d65e9-440d-4a6b-81ef-7be33c3b1e1d"
+      ]
     },
     {
       "id": "61bdb299-9d8d-4e68-9562-c655b066d454",
@@ -52,93 +56,63 @@
       "className": "Grade 10A",
       "status": "approved",
       "hasVoted": [
-        "4e5e610b-dbff-426a-a6a9-5e6eed0c8671"
+        "ba4d65e9-440d-4a6b-81ef-7be33c3b1e1d"
       ]
     }
   ],
   "elections": [
     {
-      "id": "8e4741fb-72c0-4527-bc38-085ed3def10b",
-      "title": "President",
-      "description": "Headboy good boy leader of the school",
-      "startTime": "2025-12-01T19:30",
-      "endTime": "2025-12-02T08:11",
+      "id": "ba4d65e9-440d-4a6b-81ef-7be33c3b1e1d",
+      "title": "Headboy 2024/2025",
+      "description": "To elect the school headboy",
+      "startTime": "2026-03-10T07:56:00.000Z",
+      "endTime": "2026-03-10T07:56:00.000Z",
       "resultsPublished": true,
       "posts": [
         {
-          "id": "028945e9-a327-44b8-896e-3ef2c89355c1",
-          "title": "president",
+          "id": "6543674e-8b33-481b-89cf-99af74dbcf3f",
+          "title": "Headboy",
           "candidates": [
             {
-              "id": "4ea3848e-d6d3-4791-bdad-0fd7b5356e0d",
-              "name": "Basil",
-              "description": "Wantam president"
+              "id": "dc4d84d3-4118-4a30-8864-936b3cd07ace",
+              "name": "John Doe",
+              "description": "good student"
             },
             {
-              "id": "0d280c92-3925-4bb5-80ae-7a452d6e074a",
-              "name": "Jones",
-              "description": "Two Tam president"
+              "id": "6887e923-3856-4a12-8f10-c8b625442d96",
+              "name": "Ernest Brown",
+              "description": "good student"
             }
           ]
         }
       ]
     },
     {
-      "id": "942f6e3b-b465-4b3a-a997-fe955a8ab90f",
-      "title": "residential cordinator",
-      "description": "I will bring change to the residence",
-      "startTime": "2025-12-02T02:50:00.000Z",
-      "endTime": "2025-12-02T02:55:00.000Z",
-      "resultsPublished": true,
-      "posts": []
-    },
-    {
-      "id": "bc23e0de-54f6-4c02-8bf5-9f5c8c62406e",
-      "title": "head girl",
-      "description": "i will serve you",
-      "startTime": "2025-12-02T10:23:00.000Z",
-      "endTime": "2025-12-02T10:30:00.000Z",
+      "id": "bd363f1b-5b25-430d-9087-d93359690eec",
+      "title": "Head Girl",
+      "description": "to elect the school headgirl",
+      "startTime": "2026-03-10T14:25:00.000Z",
+      "endTime": "2026-03-11T14:25:00.000Z",
       "resultsPublished": false,
       "posts": [
         {
-          "id": "b0532d96-4cb1-4267-993b-0e5a2df652a5",
-          "title": "PRESIDENT",
+          "id": "352cf934-46cd-4942-8c6c-f4fbd2a11cf9",
+          "title": "The school head girl",
           "candidates": [
             {
-              "id": "ca7618c1-7d70-4f0a-9212-252dcbf9c457",
-              "name": "OMOLLO",
-              "description": "GOOD BOY IS A GOOD BOY WITH A GOOD BOY"
+              "id": "67f3085b-cc35-4c84-94c7-6462fa33eca1",
+              "name": "Sarah",
+              "description": "transformative"
             },
             {
-              "id": "ff814d4c-9683-4c96-a172-96bb04186d75",
-              "name": "BARAKA",
-              "description": "I AM A GOOD BOY "
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "4e5e610b-dbff-426a-a6a9-5e6eed0c8671",
-      "title": "DH CAPTAIN",
-      "description": "stand at the door",
-      "startTime": "2025-12-02T08:21:00.000Z",
-      "endTime": "2025-12-02T04:07:00.000Z",
-      "resultsPublished": true,
-      "posts": [
-        {
-          "id": "5712d7f6-02c4-429d-8281-35553ef06899",
-          "title": "DH CAPTAIN",
-          "candidates": [
-            {
-              "id": "e744e5c8-ccc3-4244-a6f8-c87ef8568085",
-              "name": "JULIUS MATINDE NYERERE",
-              "description": "i will be a good leader"
+              "id": "be967bb6-df75-4bda-b145-04448a2318d4",
+              "name": "Favour",
+              "description": "transformative"
             },
             {
-              "id": "d1580ebd-19db-44b4-bb1b-53b03a2b1d2c",
-              "name": "jackson",
-              "description": "i  will serve you"
+              "id": "fc507413-6daf-41f2-88e0-9fb257cb3105",
+              "name": "Shalet",
+              "description": "transformative"
             }
           ]
         }
@@ -147,20 +121,44 @@
   ],
   "votes": [
     {
-      "id": "cc7e5980-7fb7-440b-affb-a244f516ee76",
-      "electionId": "8e4741fb-72c0-4527-bc38-085ed3def10b",
-      "postId": "028945e9-a327-44b8-896e-3ef2c89355c1",
-      "candidateId": "0d280c92-3925-4bb5-80ae-7a452d6e074a",
+      "id": "0d214300-5060-41ae-b0bd-9287435c0900",
+      "electionId": "ba4d65e9-440d-4a6b-81ef-7be33c3b1e1d",
+      "postId": "6543674e-8b33-481b-89cf-99af74dbcf3f",
+      "candidateId": "dc4d84d3-4118-4a30-8864-936b3cd07ace",
       "voterId": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f",
-      "timestamp": "2025-12-02T05:03:41.420Z"
+      "timestamp": "2026-03-10T13:59:11.136Z"
     },
     {
-      "id": "61425b6a-b0d2-4744-9fa7-362a9f5f17e8",
-      "electionId": "4e5e610b-dbff-426a-a6a9-5e6eed0c8671",
-      "postId": "5712d7f6-02c4-429d-8281-35553ef06899",
-      "candidateId": "e744e5c8-ccc3-4244-a6f8-c87ef8568085",
+      "id": "9b46a78a-52fe-41b9-a7dd-b70b6467820d",
+      "electionId": "ba4d65e9-440d-4a6b-81ef-7be33c3b1e1d",
+      "postId": "6543674e-8b33-481b-89cf-99af74dbcf3f",
+      "candidateId": "dc4d84d3-4118-4a30-8864-936b3cd07ace",
+      "voterId": "d9c346da-3428-4dd5-b326-a33f7d677dcb",
+      "timestamp": "2026-03-10T13:59:48.522Z"
+    },
+    {
+      "id": "53a2f389-9831-4d57-8972-9be2e43d4abd",
+      "electionId": "ba4d65e9-440d-4a6b-81ef-7be33c3b1e1d",
+      "postId": "6543674e-8b33-481b-89cf-99af74dbcf3f",
+      "candidateId": "dc4d84d3-4118-4a30-8864-936b3cd07ace",
+      "voterId": "b1e50bdd-8e2e-40d2-a113-f7d8b3df1243",
+      "timestamp": "2026-03-10T14:00:10.876Z"
+    },
+    {
+      "id": "2e8c34ba-fa32-4ef4-9066-c4d6e555489b",
+      "electionId": "ba4d65e9-440d-4a6b-81ef-7be33c3b1e1d",
+      "postId": "6543674e-8b33-481b-89cf-99af74dbcf3f",
+      "candidateId": "6887e923-3856-4a12-8f10-c8b625442d96",
       "voterId": "61bdb299-9d8d-4e68-9562-c655b066d454",
-      "timestamp": "2025-12-02T11:45:10.299Z"
+      "timestamp": "2026-03-10T14:00:34.975Z"
+    },
+    {
+      "id": "270c97d2-9c1f-4b40-b608-7116d1db8b8e",
+      "electionId": "bd363f1b-5b25-430d-9087-d93359690eec",
+      "postId": "352cf934-46cd-4942-8c6c-f4fbd2a11cf9",
+      "candidateId": "67f3085b-cc35-4c84-94c7-6462fa33eca1",
+      "voterId": "0e2b6b70-08b9-4f96-a9f5-1e334ede555f",
+      "timestamp": "2026-03-10T16:32:04.965Z"
     }
   ],
   "passwordResets": {
@@ -171,6 +169,18 @@
     "450b592c58baf2b0f3fa737bf96eb670fc3566a249d31a93ccbe4053fdbdd91f": {
       "email": "brian.baraka@mpesafoundationacademy.ac.ke",
       "expiry": 1764741651517
+    },
+    "45bbd719f5738be46ea3d427ce04ca4f87dca42cd30feddc2ac9a7f2767d0349": {
+      "email": "brian.baraka@mpesafoundationacademy.ac.ke",
+      "expiry": 1773245031003
+    },
+    "4d679ed47dd6b9f89cb033d4abdaa2c453f058dd44937a03217aed216a7477ce": {
+      "email": "brian.baraka@mpesafoundationacademy.ac.ke",
+      "expiry": 1773246876588
+    },
+    "10543d8b7ed7facbdb6579dbcb187ef399663d4987a099fd5b0bfb072848dce3": {
+      "email": "brian.baraka@mpesafoundationacademy.ac.ke",
+      "expiry": 1773248137523
     }
   }
 }
