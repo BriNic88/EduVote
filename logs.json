@@ -531,5 +531,18 @@
       "adminId": "admin"
     },
     "error": "Invalid password"
+  },
+  {
+    "timestamp": "2026-03-11T05:40:01.991Z",
+    "user": {
+      "id": "Anonymous",
+      "role": "Anonymous",
+      "email": "Anonymous"
+    },
+    "action": "Forgot password request",
+    "status": "success",
+    "details": {
+      "email": "brian.baraka@mpesafoundationacademy.ac.ke"
+    }
   }
 ]
